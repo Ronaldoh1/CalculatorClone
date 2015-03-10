@@ -412,6 +412,7 @@
 				F2C2D96A1AAE6318009E8A72 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		F2C2D96B1AAE6318009E8A72 /* Build configuration list for PBXNativeTarget "CalculatorCloneTests" */ = {
 			isa = XCConfigurationList;
@@ -420,6 +421,7 @@
 				F2C2D96D1AAE6318009E8A72 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

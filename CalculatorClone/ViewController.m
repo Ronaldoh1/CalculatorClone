@@ -35,7 +35,13 @@
 @property (weak, nonatomic) IBOutlet UIButton *periodButton;
 @property (weak, nonatomic) IBOutlet UIButton *equalsButton;
 
+
+
 @end
+
+float finalTotalAmount = 0.0;
+int number = 0;
+NSString *operation;
 
 @implementation ViewController
 
@@ -68,7 +74,153 @@
 
 
 }
+- (IBAction)clearButtonTapped:(id)sender {
+    number = 0;
 
+    self.inputText.text = @"0";
+    finalTotalAmount = 0;
+
+
+}
+
+- (IBAction)plusOrMinusButtonTapped:(id)sender {
+    operation = @"+/-";
+    finalTotalAmount = number;
+
+
+}
+- (IBAction)percentButtonTapped:(id)sender {
+    operation = @"%";
+
+    finalTotalAmount = number;
+    number = 0;
+
+}
+
+- (IBAction)divisionButtonTapped:(id)sender {
+    operation = @"/";
+    self.inputText.text = @"0";
+    finalTotalAmount = number;
+    number = 0;
+}
+
+- (IBAction)timesButtonTapped:(id)sender {
+
+    operation = @"*";
+    self.inputText.text = @"0";
+    finalTotalAmount = number;
+    number = 0;
+}
+- (IBAction)minusButtonTapped:(id)sender {
+    operation = @"-";
+    self.inputText.text = @"0";
+    finalTotalAmount = number;
+    number = 0;
+
+
+}
+- (IBAction)plusButtonTapped:(id)sender {
+    operation = @"+";
+    self.inputText.text = @"0";
+    number = 0;
+
+
+}
+- (IBAction)equalButtonTapped:(id)sender {
+    if ([operation  isEqual: @"+"]){
+
+        finalTotalAmount = finalTotalAmount + number;
+
+        self.inputText.text = [NSString stringWithFormat:@"%f",finalTotalAmount];
+    } else if([operation  isEqual: @"-"]){
+
+        finalTotalAmount = finalTotalAmount - number;
+         self.inputText.text = [NSString stringWithFormat:@"%f",finalTotalAmount];
+    } else if([operation  isEqual: @"*"]){
+
+        finalTotalAmount = finalTotalAmount *number;
+        self.inputText.text = [NSString stringWithFormat:@"%f",finalTotalAmount];
+    } else if([operation  isEqual: @"/"]){
+
+        finalTotalAmount = finalTotalAmount /number;
+        self.inputText.text = [NSString stringWithFormat:@"%f",finalTotalAmount];
+    } else if ([operation  isEqual: @"%"]){
+
+        finalTotalAmount = finalTotalAmount +(number / 100);
+        self.inputText.text = [NSString stringWithFormat:@"%f",finalTotalAmount];
+    } else if ([operation  isEqual: @"+/-"]){
+
+        finalTotalAmount = finalTotalAmount * -1; 
+        self.inputText.text = [NSString stringWithFormat:@"%f",finalTotalAmount];
+    }
+}
+- (IBAction)periodButtonTapped:(id)sender {
+
+}
+- (IBAction)oneButtonTapped:(id)sender {
+   // finalTotalAmount = [self.inputText.text intValue] + 1;
+    number = number * 10;
+    number = number + 1;
+
+    self.inputText.text = [NSString stringWithFormat:@"%d", number];
+
+}
+
+- (IBAction)twoButtonTapped:(id)sender {
+    number = number * 10;
+    number = number + 2;
+
+    self.inputText.text = [NSString stringWithFormat:@"%d", number];
+}
+- (IBAction)threeButtonTapped:(id)sender {
+    number = number * 10;
+    number = number + 3;
+
+    self.inputText.text = [NSString stringWithFormat:@"%d", number];
+}
+- (IBAction)fourButtonTapped:(id)sender {
+    number = number * 10;
+    number = number + 4;
+
+    self.inputText.text = [NSString stringWithFormat:@"%d", number];
+}
+- (IBAction)fiveButtonTapped:(id)sender {
+    number = number * 10;
+    number = number + 5;
+
+    self.inputText.text = [NSString stringWithFormat:@"%d", number];
+}
+
+- (IBAction)sixButtonTapped:(id)sender {    number = number * 10;
+    number = number + 6;
+
+    self.inputText.text = [NSString stringWithFormat:@"%d", number];
+
+}
+- (IBAction)sevenButtonTapped:(id)sender {
+    number = number * 10;
+    number = number + 7;
+
+    self.inputText.text = [NSString stringWithFormat:@"%d", number];
+}
+- (IBAction)eightButtonTapped:(id)sender {
+    number = number * 10;
+    number = number + 8;
+
+    self.inputText.text = [NSString stringWithFormat:@"%d", number];
+}
+- (IBAction)nineButtonTapped:(id)sender {
+    number = number * 10;
+    number = number + 9;
+
+    self.inputText.text = [NSString stringWithFormat:@"%d", number];
+}
+- (IBAction)zeroButtonTapped:(id)sender {
+    number = number * 10;
+    number = number + 0;
+
+    self.inputText.text = [NSString stringWithFormat:@"%d", number];
+}
 
 
 
