@@ -34,14 +34,12 @@
 @property (weak, nonatomic) IBOutlet UIButton *zeroButton;
 @property (weak, nonatomic) IBOutlet UIButton *periodButton;
 @property (weak, nonatomic) IBOutlet UIButton *equalsButton;
-
-
-
+@property float finalTotalAmount;
+@property int number;
+@property NSString *operation;
 @end
 
-float finalTotalAmount = 0.0;
-int number = 0;
-NSString *operation;
+
 
 @implementation ViewController
 
@@ -75,153 +73,159 @@ NSString *operation;
 
 }
 - (IBAction)clearButtonTapped:(id)sender {
-    number = 0;
+    self.number = 0;
 
     self.inputText.text = @"0";
-    finalTotalAmount = 0;
+    self.finalTotalAmount = 0;
 
 
 }
 
 - (IBAction)plusOrMinusButtonTapped:(id)sender {
-    operation = @"+/-";
-    finalTotalAmount = number;
+    self.operation = @"+/-";
+    self.finalTotalAmount = self.number;
 
 
 }
 - (IBAction)percentButtonTapped:(id)sender {
-    operation = @"%";
+    self.operation = @"%";
 
-    finalTotalAmount = number;
-    number = 0;
+    self.finalTotalAmount = self.number;
+    self.number = 0;
 
 }
 
 - (IBAction)divisionButtonTapped:(id)sender {
-    operation = @"/";
+    self.operation = @"/";
     self.inputText.text = @"0";
-    finalTotalAmount = number;
-    number = 0;
+    self.finalTotalAmount = self.number;
+    self.number = 0;
 }
 
 - (IBAction)timesButtonTapped:(id)sender {
 
-    operation = @"*";
-    self.inputText.text = @"0";
-    finalTotalAmount = number;
-    number = 0;
+    self.operation = @"*";
+    self.inputText.text = @"";
+    self.finalTotalAmount = self.number;
+    self.number = 0;
 }
 - (IBAction)minusButtonTapped:(id)sender {
-    operation = @"-";
+    self.operation = @"-";
     self.inputText.text = @"0";
-    finalTotalAmount = number;
-    number = 0;
+    self.finalTotalAmount = self.number;
+    self.number = 0;
 
 
 }
 - (IBAction)plusButtonTapped:(id)sender {
-    operation = @"+";
+    self.operation = @"+";
     self.inputText.text = @"0";
-    number = 0;
+    self.number = 0;
 
 
 }
 - (IBAction)equalButtonTapped:(id)sender {
-    if ([operation  isEqual: @"+"]){
+    if ([self.operation  isEqual: @"+"]){
 
-        finalTotalAmount = finalTotalAmount + number;
+        self.finalTotalAmount = self.finalTotalAmount + self.number;
 
-        self.inputText.text = [NSString stringWithFormat:@"%f",finalTotalAmount];
-    } else if([operation  isEqual: @"-"]){
+        self.inputText.text = [NSString stringWithFormat:@"%f",self.finalTotalAmount];
+    } else if([self.operation  isEqual: @"-"]){
 
-        finalTotalAmount = finalTotalAmount - number;
-         self.inputText.text = [NSString stringWithFormat:@"%f",finalTotalAmount];
-    } else if([operation  isEqual: @"*"]){
+        self.finalTotalAmount = self.finalTotalAmount - self.number;
+         self.inputText.text = [NSString stringWithFormat:@"%f",self.finalTotalAmount];
+    } else if([self.operation  isEqual: @"*"]){
 
-        finalTotalAmount = finalTotalAmount *number;
-        self.inputText.text = [NSString stringWithFormat:@"%f",finalTotalAmount];
-    } else if([operation  isEqual: @"/"]){
+        self.finalTotalAmount = self.finalTotalAmount * self.number;
+        self.inputText.text = [NSString stringWithFormat:@"%f", self.finalTotalAmount];
+    } else if([self.operation  isEqual: @"/"]){
 
-        finalTotalAmount = finalTotalAmount /number;
-        self.inputText.text = [NSString stringWithFormat:@"%f",finalTotalAmount];
-    } else if ([operation  isEqual: @"%"]){
+        self.finalTotalAmount = self.finalTotalAmount / self.number;
+        self.inputText.text = [NSString stringWithFormat:@"%f",self.finalTotalAmount];
+    } else if ([self.operation  isEqual: @"%"]){
 
-        finalTotalAmount = finalTotalAmount +(number / 100);
-        self.inputText.text = [NSString stringWithFormat:@"%f",finalTotalAmount];
-    } else if ([operation  isEqual: @"+/-"]){
+        self.finalTotalAmount = self.finalTotalAmount +(self.number / 100);
+        self.inputText.text = [NSString stringWithFormat:@"%f",self.finalTotalAmount];
+    } else if ([self.operation  isEqual: @"+/-"]){
 
-        finalTotalAmount = finalTotalAmount * -1; 
-        self.inputText.text = [NSString stringWithFormat:@"%f",finalTotalAmount];
+        self.finalTotalAmount = self.finalTotalAmount * -1;
+        self.inputText.text = [NSString stringWithFormat:@"%f", self.finalTotalAmount];
     }
 }
 - (IBAction)periodButtonTapped:(id)sender {
 
+
 }
 - (IBAction)oneButtonTapped:(id)sender {
    // finalTotalAmount = [self.inputText.text intValue] + 1;
-    number = number * 10;
-    number = number + 1;
+    self.number = self.number * 10;
+    self.number = self.number + 1;
 
-    self.inputText.text = [NSString stringWithFormat:@"%d", number];
+    self.inputText.text = [NSString stringWithFormat:@"%d", self.number];
 
 }
 
 - (IBAction)twoButtonTapped:(id)sender {
-    number = number * 10;
-    number = number + 2;
+    self.number = self.number * 10;
+    self.number = self.number + 2;
 
-    self.inputText.text = [NSString stringWithFormat:@"%d", number];
+    self.inputText.text = [NSString stringWithFormat:@"%d", self.number];
 }
 - (IBAction)threeButtonTapped:(id)sender {
-    number = number * 10;
-    number = number + 3;
+    self.number = self.number * 10;
+    self.number = self.number + 3;
 
-    self.inputText.text = [NSString stringWithFormat:@"%d", number];
+    self.inputText.text = [NSString stringWithFormat:@"%d", self.number];
 }
 - (IBAction)fourButtonTapped:(id)sender {
-    number = number * 10;
-    number = number + 4;
+    self.number = self.number * 10;
+    self.number = self.number + 4;
 
-    self.inputText.text = [NSString stringWithFormat:@"%d", number];
+    self.inputText.text = [NSString stringWithFormat:@"%d", self.number];
 }
 - (IBAction)fiveButtonTapped:(id)sender {
-    number = number * 10;
-    number = number + 5;
+    self.number = self.number * 10;
+    self.number = self.number + 5;
 
-    self.inputText.text = [NSString stringWithFormat:@"%d", number];
+    self.inputText.text = [NSString stringWithFormat:@"%d", self.number];
 }
 
-- (IBAction)sixButtonTapped:(id)sender {    number = number * 10;
-    number = number + 6;
+- (IBAction)sixButtonTapped:(id)sender {    self.number = self.number * 10;
+    self.number = self.number + 6;
 
-    self.inputText.text = [NSString stringWithFormat:@"%d", number];
+    self.inputText.text = [NSString stringWithFormat:@"%d", self.number];
 
 }
 - (IBAction)sevenButtonTapped:(id)sender {
-    number = number * 10;
-    number = number + 7;
+    self.number = self.number * 10;
+    self.number = self.number + 7;
 
-    self.inputText.text = [NSString stringWithFormat:@"%d", number];
+    self.inputText.text = [NSString stringWithFormat:@"%d", self.number];
 }
 - (IBAction)eightButtonTapped:(id)sender {
-    number = number * 10;
-    number = number + 8;
+    self.number = self.number * 10;
+    self.number = self.number + 8;
 
-    self.inputText.text = [NSString stringWithFormat:@"%d", number];
+    self.inputText.text = [NSString stringWithFormat:@"%d", self.number];
 }
 - (IBAction)nineButtonTapped:(id)sender {
-    number = number * 10;
-    number = number + 9;
+    self.number = self.number * 10;
+    self.number = self.number + 9;
 
-    self.inputText.text = [NSString stringWithFormat:@"%d", number];
+    self.inputText.text = [NSString stringWithFormat:@"%d", self.number];
 }
 - (IBAction)zeroButtonTapped:(id)sender {
-    number = number * 10;
-    number = number + 0;
+    self.number = self.number * 10;
+    self.number = self.number + 0;
 
-    self.inputText.text = [NSString stringWithFormat:@"%d", number];
+    self.inputText.text = [NSString stringWithFormat:@"%d", self.number];
 }
 
+- (float) getRidOfZeroes:(float) floatNumber{
+
+    int someInt = (int)floatNumber;
+    return someInt / 100;
+}
 
 
 
